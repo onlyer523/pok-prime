@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PoK Prime | Peak of Korea Prime</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #090d16;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', Apple SD Gothic Neo, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      background-color: rgba(9, 13, 22, 0.9);
+      position: sticky;
+      top: 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 1.1rem;
+      color: #f8fafc;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: #f8fafc;
+    }
+
+    .hero {
+      padding: 100px 8% 80px;
+      max-width: 960px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 4px;
+      margin-bottom: 20px;
+      background-color: rgba(56, 189, 248, 0.08);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 680px;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #38bdf8;
+      color: #090d16;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-right: 12px;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .section {
+      padding: 60px 8%;
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #111827;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      color: #f8fafc;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: #94a3b8;
+      font-size: 0.92rem;
+    }
+
+    footer {
+      padding: 36px 8%;
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">PoK <span>PRIME</span></div>
+    <nav>
+      <a href="#about">기관 소개</a>
+      <a href="#tracks">커리큘럼</a>
+      <a href="#admission">선발 안내</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="badge">PEAK OF KOREA PRIME · ALGORITHMS & CS</div>
+    <h1>실력으로 증명하는<br>최상위 알고리즘 아카데미</h1>
+    <p>
+      PoK 프라임은 정교한 논리, 깊은 문제 해결력, 그리고 치열한 실전 훈련을 중심으로
+      컴퓨터 과학의 정점을 향한 인재를 선발하고 단련합니다.
+    </p>
+    <a href="#admission" class="btn">선발 기준 보기</a>
+    <a href="#tracks" class="btn-outline">훈련 과정 살펴보기</a>
+  </section>
+
+  <section id="about" class="section">
+    <h2>기관 철학</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>01. 철저한 실력 중심</h3>
+        <p>형식적인 수식보다 실제 코드 구현력과 알고리즘 설계 역량을 핵심 기준으로 삼습니다.</p>
+      </div>
+      <div class="card">
+        <h3>02. 고밀도 문제 해결</h3>
+        <p>자료구조, 수학적 사고, 최적화 과정을 통해 한계를 돌파하는 훈련을 진행합니다.</p>
+      </div>
+      <div class="card">
+        <h3>03. 실전 경쟁력</h3>
+        <p>제한 시간과 압박 속에서도 흔들리지 않고 정확한 해답을 도출하는 힘을 기릅니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tracks" class="section">
+    <h2>주요 훈련 트랙</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>알고리즘 & 자료구조</h3>
+        <p>그래프, 동적 계획법, 탐색·정렬 및 시간·공간 복잡도 분석 심화.</p>
+      </div>
+      <div class="card">
+        <h3>실전 경시 대비</h3>
+        <p>고난도 문제 풀이 패턴 분석과 실전 시뮬레이션을 통한 문제 해결 속도 강화.</p>
+      </div>
+      <div class="card">
+        <h3>시스템 & 로직 설계</h3>
+        <p>컴퓨터 구조와 논리적 사고를 결합한 안정적인 프로그램 설계 역량 배양.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="admission" class="section">
+    <h2>선발 및 입학 안내</h2>
+    <div class="card">
+      <h3>정기 선발 전형</h3>
+      <p>
+        사전 진단 및 알고리즘 평가 과제를 통과한 지원자에 한해 입학 절차가 진행되며,
+        합격자에게는 공식 입학증서(Admission Certificate)가 발급됩니다.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 PoK Prime. All rights reserved.
+  </footer>
+</body>
+</html>
