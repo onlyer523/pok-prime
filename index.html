@@ -3,219 +3,880 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PoK Prime | Peak of Korea Prime</title>
+  <title>PoK Prime | Peak of Korea Prime — Official Portal</title>
   <style>
+    :root {
+      --bg-main: #070b12;
+      --bg-surface: #0d1320;
+      --bg-card: #11192a;
+      --bg-card-alt: #0f1624;
+      --border-subtle: rgba(148, 163, 184, 0.14);
+      --border-accent: rgba(56, 189, 248, 0.35);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #8b9bb4;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --gold: #eab308;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #090d16;
-      color: #e2e8f0;
-      font-family: 'Segoe UI', Apple SD Gothic Neo, sans-serif;
-      line-height: 1.6;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* 상단 기관 바 & 내비게이션 */
+    .topbar {
+      background-color: #05080d;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 8px 8%;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      letter-spacing: 0.4px;
+    }
+
+    .topbar strong {
+      color: var(--accent);
+      font-weight: 600;
     }
 
     header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 8%;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-      background-color: rgba(9, 13, 22, 0.9);
-      position: sticky;
-      top: 0;
+      padding: 18px 8%;
+      background-color: rgba(7, 11, 18, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .logo {
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-main {
+      font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: 2px;
-      font-size: 1.1rem;
-      color: #f8fafc;
+      color: var(--text-primary);
     }
 
-    .logo span {
-      color: #38bdf8;
+    .brand-main span {
+      color: var(--accent);
     }
 
-    nav a {
-      color: #94a3b8;
-      text-decoration: none;
-      margin-left: 24px;
-      font-size: 0.95rem;
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
     }
 
-    nav a:hover {
-      color: #f8fafc;
-    }
-
-    .hero {
-      padding: 100px 8% 80px;
-      max-width: 960px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 12px;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 4px;
-      margin-bottom: 20px;
-      background-color: rgba(56, 189, 248, 0.08);
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.15;
-      color: #ffffff;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      color: #94a3b8;
-      max-width: 680px;
-      margin-bottom: 32px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #38bdf8;
-      color: #090d16;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-right: 12px;
-    }
-
-    .btn-outline {
-      display: inline-block;
-      padding: 12px 24px;
-      border: 1px solid #334155;
-      color: #e2e8f0;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    .section {
-      padding: 60px 8%;
-      border-top: 1px solid rgba(148, 163, 184, 0.12);
-    }
-
-    .section h2 {
-      font-size: 1.6rem;
-      color: #ffffff;
-      margin-bottom: 24px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    nav {
+      display: flex;
+      flex-wrap: wrap;
       gap: 20px;
     }
 
-    .card {
-      background-color: #111827;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 24px;
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
     }
 
-    .card h3 {
-      color: #f8fafc;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
+    nav a:hover {
+      color: var(--accent);
     }
 
-    .card p {
-      color: #94a3b8;
+    /* 히어로 섹션 */
+    .hero {
+      padding: 84px 8% 72px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.12), transparent 45%),
+        linear-gradient(180deg, #090f1a 0%, var(--bg-main) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .doc-code {
+      display: inline-block;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      background-color: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      padding: 5px 11px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      letter-spacing: 0.6px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 28px;
+      max-width: 640px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #05080d;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 6px;
       font-size: 0.92rem;
     }
 
-    footer {
-      padding: 36px 8%;
-      border-top: 1px solid rgba(148, 163, 184, 0.12);
-      color: #64748b;
+    .btn-secondary {
+      border: 1px solid #334155;
+      color: var(--text-primary);
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      background-color: rgba(15, 23, 42, 0.6);
+    }
+
+    .status-panel {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .status-panel-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.12);
+    }
+
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+
+    .metric-label {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    .metric-val {
+      font-family: Consolas, monospace;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* 섹션 공통 */
+    section.block {
+      padding: 76px 8%;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    section.block:nth-child(even) {
+      background-color: var(--bg-surface);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .sec-head {
+      margin-bottom: 36px;
+    }
+
+    .sec-tag {
+      font-family: Consolas, monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .sec-head h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin-bottom: 10px;
+    }
+
+    .sec-head p {
+      color: var(--text-muted);
+      max-width: 740px;
+      font-size: 0.96rem;
+    }
+
+    /* 그리드 & 카드 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 26px;
+    }
+
+    .card-num {
+      font-family: Consolas, monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
+    .card ul {
+      list-style: none;
+      border-top: 1px solid rgba(148, 163, 184, 0.1);
+      padding-top: 12px;
+    }
+
+    .card ul li {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      padding: 4px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "▪";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+    }
+
+    /* 표(테이블) */
+    .table-wrap {
+      overflow-x: auto;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #0b111d;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    td {
+      color: var(--text-secondary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-tier {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      font-family: Consolas, monospace;
+      background-color: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--border-accent);
+    }
+
+    /* 입학증서 양식 미리보기 */
+    .cert-box {
+      background: linear-gradient(145deg, #101827 0%, #0b101b 100%);
+      border: 1px solid rgba(234, 179, 8, 0.35);
+      border-radius: 12px;
+      padding: 36px;
+      position: relative;
+    }
+
+    .cert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(234, 179, 8, 0.22);
+    }
+
+    .cert-seal {
+      color: var(--gold);
+      font-family: Consolas, monospace;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+
+    .cert-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .cert-body {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .cert-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.2);
       font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .cert-meta strong {
+      display: block;
+      color: var(--text-primary);
+      font-family: Consolas, monospace;
+      margin-top: 3px;
+    }
+
+    /* 공지 및 윤리 규약 */
+    .notice-item {
+      padding: 18px 22px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .notice-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-family: Consolas, monospace;
+    }
+
+    .notice-item h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+    }
+
+    .notice-item p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* 푸터 */
+    footer {
+      background-color: #05080d;
+      padding: 52px 8% 36px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-grid {
+      max-width: 1120px;
+      margin: 0 auto 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+
+    footer h4 {
+      color: var(--text-primary);
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    footer p, footer li {
+      margin-bottom: 6px;
+      list-style: none;
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      nav {
+        gap: 14px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <div class="topbar">
+    <div><strong>PoK PRIME</strong> · PEAK OF KOREA PRIME — ALGORITHMIC &amp; COMPUTATIONAL SYSTEMS AUTHORITY</div>
+    <div>DOC-ID: POK-PORTAL-V2.0 · STATUS: <strong>ACTIVE</strong></div>
+  </div>
+
   <header>
-    <div class="logo">PoK <span>PRIME</span></div>
+    <div class="brand">
+      <div class="brand-main">PoK <span>PRIME</span></div>
+      <div class="brand-sub">Peak of Korea Prime · Algorithms &amp; Logic</div>
+    </div>
     <nav>
-      <a href="#about">기관 소개</a>
-      <a href="#tracks">커리큘럼</a>
-      <a href="#admission">선발 안내</a>
+      <a href="#mandate">기관 헌장</a>
+      <a href="#curriculum">훈련 체계</a>
+      <a href="#tiers">등급 및 선발</a>
+      <a href="#certificate">공식 입학증서</a>
+      <a href="#bulletins">공지 및 규약</a>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="badge">PEAK OF KOREA PRIME · ALGORITHMS & CS</div>
-    <h1>실력으로 증명하는<br>최상위 알고리즘 아카데미</h1>
-    <p>
-      PoK 프라임은 정교한 논리, 깊은 문제 해결력, 그리고 치열한 실전 훈련을 중심으로
-      컴퓨터 과학의 정점을 향한 인재를 선발하고 단련합니다.
-    </p>
-    <a href="#admission" class="btn">선발 기준 보기</a>
-    <a href="#tracks" class="btn-outline">훈련 과정 살펴보기</a>
+    <div class="hero-inner">
+      <div>
+        <div class="doc-code">OFFICIAL INSTITUTIONAL DOSSIER // ALGORITHMS · LOGIC · ARCHITECTURE</div>
+        <h1>정교한 논리와 실전 연산으로 증명하는 <span>PoK Prime</span></h1>
+        <p class="hero-desc">
+          PoK Prime(Peak of Korea Prime)은 추상적 수식 암기나 피상적 코딩을 넘어,
+          엄밀한 수학적 모델링, 고난도 알고리즘 설계, 시간·공간 복잡도 최적화, 그리고
+          실전 시스템 구현 역량을 검증하는 최상위 엘리트 알고리즘·컴퓨터과학 기관입니다.
+        </p>
+        <div class="btn-row">
+          <a href="#tiers" class="btn-primary">선발 기준 및 등급 체계</a>
+          <a href="#certificate" class="btn-secondary">입학증서 규격 확인</a>
+        </div>
+      </div>
+
+      <aside class="status-panel">
+        <div class="status-panel-title">Institutional Operational Metrics</div>
+        <div class="metric-row">
+          <span class="metric-label">핵심 평가 영역</span>
+          <span class="metric-val">ALGO · DS · LOGIC · SYS</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">선발 전형 방식</span>
+          <span class="metric-val">CLOSED DIAGNOSTIC &amp; PROOF</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">수료 증명 체계</span>
+          <span class="metric-val">SERIALIZED CERTIFICATE</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">학술 무결성 기준</span>
+          <span class="metric-val">ZERO-TOLERANCE AUDIT</span>
+        </div>
+      </aside>
+    </div>
   </section>
 
-  <section id="about" class="section">
-    <h2>기관 철학</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>01. 철저한 실력 중심</h3>
-        <p>형식적인 수식보다 실제 코드 구현력과 알고리즘 설계 역량을 핵심 기준으로 삼습니다.</p>
+  <section id="mandate" class="block">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">01. INSTITUTIONAL MANDATE</span>
+        <h2>기관 헌장 및 운영 원칙</h2>
+        <p>
+          PoK Prime은 문제의 본질을 분해하고 최적의 해법을 도출하는 사고력을 최우선 가치로 삼습니다.
+          모든 교육과 평가는 재현 가능한 논리와 검증 가능한 코드 구현을 기준으로 운영됩니다.
+        </p>
       </div>
-      <div class="card">
-        <h3>02. 고밀도 문제 해결</h3>
-        <p>자료구조, 수학적 사고, 최적화 과정을 통해 한계를 돌파하는 훈련을 진행합니다.</p>
-      </div>
-      <div class="card">
-        <h3>03. 실전 경쟁력</h3>
-        <p>제한 시간과 압박 속에서도 흔들리지 않고 정확한 해답을 도출하는 힘을 기릅니다.</p>
+
+      <div class="grid-3">
+        <article class="card">
+          <span class="card-num">PRINCIPLE 01</span>
+          <h3>증명 가능한 논리적 엄밀성</h3>
+          <p>
+            직관이나 추측에 의존한 해법이 아니라, 경계 조건과 최악 수행 시간을 수학적으로
+            설명하고 검증할 수 있는 알고리즘 설계를 요구합니다.
+          </p>
+          <ul>
+            <li>반례 도출 및 불변식(Invariant) 검증 훈련</li>
+            <li>점근적 표기법 기반 복잡도 상·하한 분석</li>
+            <li>코너 케이스 및 오버플로우 방어 설계</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card-num">PRINCIPLE 02</span>
+          <h3>고밀도 실전 문제 해결</h3>
+          <p>
+            단순 유형 반복을 넘어 미지의 문제 상황을 구조화하고, 제한된 시간과 메모리
+            예산 안에서 최적화된 해답을 도출하는 고강도 훈련을 실시합니다.
+          </p>
+          <ul>
+            <li>다단계 분해 및 상태 공간 축소 전략</li>
+            <li>실전 모의 평가 및 사후 원인 분석(Post-Mortem)</li>
+            <li>오답 패턴 데이터베이스화 및 약점 교정</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card-num">PRINCIPLE 03</span>
+          <h3>시스템 수준의 구현 완성도</h3>
+          <p>
+            알고리즘 이론이 실제 실행 환경에서 어떻게 작동하는지 이해하고, 가독성·안정성·
+            성능을 균형 있게 갖춘 코드를 작성하는 역량을 기릅니다.
+          </p>
+          <ul>
+            <li>메모리 레이아웃 및 캐시 지역성 고려</li>
+            <li>모듈화 및 명확한 입출력 명세 준수</li>
+            <li>독립적 코드 리뷰 및 무결성 검증</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="tracks" class="section">
-    <h2>주요 훈련 트랙</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>알고리즘 & 자료구조</h3>
-        <p>그래프, 동적 계획법, 탐색·정렬 및 시간·공간 복잡도 분석 심화.</p>
+  <section id="curriculum" class="block">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">02. CORE CURRICULUM &amp; TRACKS</span>
+        <h2>심화 훈련 트랙 및 세부 모듈</h2>
+        <p>
+          기관의 정규 과정은 기초 논리부터 고난도 그래프·동적 계획법, 그리고 시스템 설계까지
+          단계적으로 연결된 4개 핵심 트랙으로 구성됩니다.
+        </p>
       </div>
-      <div class="card">
-        <h3>실전 경시 대비</h3>
-        <p>고난도 문제 풀이 패턴 분석과 실전 시뮬레이션을 통한 문제 해결 속도 강화.</p>
-      </div>
-      <div class="card">
-        <h3>시스템 & 로직 설계</h3>
-        <p>컴퓨터 구조와 논리적 사고를 결합한 안정적인 프로그램 설계 역량 배양.</p>
+
+      <div class="grid-2">
+        <article class="card">
+          <span class="card-num">TRACK A · FOUNDATIONS</span>
+          <h3>이산수학, 논리 및 자료구조 심화</h3>
+          <p>
+            알고리즘 설계의 토대가 되는 집합·관계·조합론과 핵심 자료구조의 내부 동작 및
+            연산 비용을 심층적으로 다룹니다.
+          </p>
+          <ul>
+            <li>명제·술어 논리, 귀납법, 조합 및 분할</li>
+            <li>스택·큐·덱·힙·세그먼트 트리·유니온 파인드</li>
+            <li>해시 구조 충돌 관리 및 균형 탐색 원리</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card-num">TRACK B · ALGORITHMS</span>
+          <h3>그래프 이론 및 동적 계획법(DP)</h3>
+          <p>
+            고난도 경시 및 심화 알고리즘 평가에서 핵심 비중을 차지하는 그래프 모델링과
+            최적 부분 구조 설계 역량을 집중 훈련합니다.
+          </p>
+          <ul>
+            <li>최단 경로, 최소 신장 트리, 위상 정렬, SCC·단절점</li>
+            <li>비트마스크 DP, 트리 DP, 구간 DP, 최적화 기법</li>
+            <li>이분 매칭, 네트워크 플로우 및 모델링 전환</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card-num">TRACK C · COMPETITION</span>
+          <h3>실전 경시 시뮬레이션 및 전략</h3>
+          <p>
+            실제 대회 환경과 동일한 시간 제한 및 채점 조건에서 문제 선별, 시간 배분,
+            디버깅 속도를 극대화하는 실전 훈련 과정입니다.
+          </p>
+          <ul>
+            <li>제한 시간 내 문제 난이도 판별 및 우선순위 결정</li>
+            <li>스트레스 테스트 생성기 작성 및 반례 탐색</li>
+            <li>실전 경기 후 풀이 전략 비교 및 코드 리팩토링</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card-num">TRACK D · SYSTEMS</span>
+          <h3>컴퓨터 구조 및 시스템 로직</h3>
+          <p>
+            하드웨어 실행 원리와 프로그램 동작을 연결하여, 저수준 최적화와 안정적인
+            시스템 설계 감각을 확립합니다.
+          </p>
+          <ul>
+            <li>정수·부동소수점 표현, 비트 연산, 메모리 계층</li>
+            <li>프로세스·스레드 실행 흐름과 동기화 기초</li>
+            <li>명세 기반 설계 및 오류 복구 시나리오 구성</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="admission" class="section">
-    <h2>선발 및 입학 안내</h2>
-    <div class="card">
-      <h3>정기 선발 전형</h3>
-      <p>
-        사전 진단 및 알고리즘 평가 과제를 통과한 지원자에 한해 입학 절차가 진행되며,
-        합격자에게는 공식 입학증서(Admission Certificate)가 발급됩니다.
-      </p>
+  <section id="tiers" class="block">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">03. ADMISSION &amp; RANKING MATRIX</span>
+        <h2>선발 단계 및 등급 기준표</h2>
+        <p>
+          PoK Prime은 지원자의 현재 도달 수준과 문제 해결 잠재력을 다면적으로 평가하여
+          적합한 훈련 단계를 배정하고 공식 자격을 부여합니다.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>단계 / 등급</th>
+              <th>평가 및 선발 기준</th>
+              <th>주요 훈련 초점</th>
+              <th>부여 자격</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge-tier">STAGE I · SCREENING</span></td>
+              <td>기초 논리 추론, 기본 구현력 및 문제 이해도 진단 평가</td>
+              <td>사고 절차 정리, 입출력·경계 조건 오류 제거</td>
+              <td>진단 통과 기록</td>
+            </tr>
+            <tr>
+              <td><span class="badge-tier">STAGE II · EVALUATION</span></td>
+              <td>자료구조·알고리즘 응용 과제 및 해법 설명(풀이 정당성 검증)</td>
+              <td>알고리즘 선택 근거 확립, 복잡도 단축</td>
+              <td>정규 트랙 배정</td>
+            </tr>
+            <tr>
+              <td><span class="badge-tier">PRIME FELLOW</span></td>
+              <td>심화 평가 전형 통과 및 실전 과제 완수 기준 충족</td>
+              <td>고난도 복합 모델링, 실전 모의전 및 심화 설계</td>
+              <td><strong>공식 입학증서(Admission Certificate)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificate" class="block">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">04. OFFICIAL CREDENTIAL</span>
+        <h2>공식 입학증서(Admission Certificate) 규격</h2>
+        <p>
+          PoK Prime의 선발 절차를 공식적으로 통과한 인원에게는 일련번호와 발급 기준이
+          명시된 공식 입학증서가 수여됩니다. 아래는 기관 양식 규격 예시입니다.
+        </p>
+      </div>
+
+      <div class="cert-box">
+        <div class="cert-header">
+          <div class="cert-seal">★ PEAK OF KOREA PRIME · OFFICIAL CREDENTIAL</div>
+          <div class="doc-code" style="margin-bottom: 0;">FORM NO. POK-CERT-2026</div>
+        </div>
+        <div class="cert-title">입 학 증 서 (CERTIFICATE OF ADMISSION)</div>
+        <p class="cert-body">
+          본 증서는 <strong>PoK Prime(Peak of Korea Prime)</strong>이 정한 알고리즘 사고력,
+          논리적 문제 해결 및 실전 구현 평가 기준을 엄정하게 충족하였음을 공식으로 증명하며,
+          기관의 정규 과정 및 엘리트 연구·훈련 프로그램에 입학함을 인증합니다.
+        </p>
+        <div class="cert-meta">
+          <div>
+            기관 명칭
+            <strong>PoK Prime (Peak of Korea Prime)</strong>
+          </div>
+          <div>
+            발급 구분
+            <strong>REGULAR / PRIME ADMISSION</strong>
+          </div>
+          <div>
+            일련번호 규격
+            <strong>POK-YYYY-XXXX</strong>
+          </div>
+          <div>
+            검증 상태
+            <strong>VERIFIED INSTITUTIONAL RECORD</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bulletins" class="block">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">05. BULLETINS &amp; CODE OF CONDUCT</span>
+        <h2>공식 공지 및 학술 윤리 규약</h2>
+        <p>
+          기관의 신뢰성과 평가 공정성을 유지하기 위해 모든 참여자는 아래 공지 사항과
+          학술 윤리 규약을 준수해야 합니다.
+        </p>
+      </div>
+
+      <div class="notice-item">
+        <div class="notice-top">
+          <span>NOTICE · 01</span>
+          <span>2026.11</span>
+        </div>
+        <h4>PoK Prime 공식 웹 포털 v2.0 개편 및 문서 체계 고도화</h4>
+        <p>
+          기관 헌장, 4개 핵심 훈련 트랙, 선발 단계 기준표 및 공식 입학증서 규격이
+          통합 문서 형태로 정식 게시되었습니다.
+        </p>
+      </div>
+
+      <div class="notice-item">
+        <div class="notice-top">
+          <span>POLICY · 02</span>
+          <span>MANDATORY</span>
+        </div>
+        <h4>평가 공정성 및 독자적 문제 해결 원칙</h4>
+        <p>
+          진단 및 선발 평가 과정에서는 타인의 코드 무단 차용이나 외부 해법의 무비판적
+          복제를 엄격히 금지하며, 본인의 사고 과정으로 도출된 결과물만 유효하게 인정합니다.
+        </p>
+      </div>
+
+      <div class="notice-item">
+        <div class="notice-top">
+          <span>RECORD · 03</span>
+          <span>STANDARD</span>
+        </div>
+        <h4>입학증서 및 수료 기록 관리 기준</h4>
+        <p>
+          발급된 입학증서는 발급 회차, 고유 일련번호, 대상자 명칭 및 발급 일자 기준으로
+          관리되며, 허위 기재 또는 무단 변조가 확인될 경우 자격이 취소될 수 있습니다.
+        </p>
+      </div>
     </div>
   </section>
 
   <footer>
-    © 2026 PoK Prime. All rights reserved.
+    <div class="footer-grid">
+      <div>
+        <h4>PoK PRIME</h4>
+        <p>Peak of Korea Prime</p>
+        <p>알고리즘·논리·컴퓨터과학 엘리트 기관</p>
+      </div>
+      <div>
+        <h4>주요 섹션</h4>
+        <li><a href="#mandate" style="color: inherit; text-decoration: none;">기관 헌장</a></li>
+        <li><a href="#curriculum" style="color: inherit; text-decoration: none;">훈련 체계</a></li>
+        <li><a href="#tiers" style="color: inherit; text-decoration: none;">등급 및 선발</a></li>
+        <li><a href="#certificate" style="color: inherit; text-decoration: none;">공식 입학증서</a></li>
+      </div>
+      <div>
+        <h4>문서 및 자격</h4>
+        <p>공식 입학증서 규격: POK-CERT-2026</p>
+        <p>평가 기준: 알고리즘·자료구조·로직·시스템</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PoK Prime (Peak of Korea Prime). All rights reserved.</span>
+      <span>Built &amp; Published via GitHub Pages</span>
+    </div>
   </footer>
+
 </body>
 </html>
